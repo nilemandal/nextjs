@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/db";
+import { createPost } from "@/src/actions/action";
 import Link from "next/link";
 
 export default async function Page() {
@@ -14,6 +15,26 @@ export default async function Page() {
                     </li>
                 ))}
             </ul>
+
+            <form action={createPost} className="max-w-[400px] mx-auto mt-24">
+                <input
+                    type="text"
+                    placeholder="Title"
+                    name="title"
+                    className="border border-gray-300 rounded px-4 py-2 w-full mb-4"
+                />
+                <textarea
+                    placeholder="Content"
+                    name="content"
+                    className="border border-gray-300 rounded px-4 py-2 w-full mb-4"
+                ></textarea>
+                <button
+                    type="submit"
+                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                >
+                    Create Post
+                </button>
+            </form>
         </div>
     )
 }
